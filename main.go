@@ -24,14 +24,23 @@ func main() {
 	guess := -1
 
 	scanner := bufio.NewScanner(os.Stdin)
+	fmt.Printf("\n\n")
+
 	fmt.Printf("%s Bienvenido al juego de adivinar el número %s \n", emoji.SmilingCatWithHeartEyes, emoji.SmilingCatWithHeartEyes)
+	for i := 1; i < 25; i++ {
+		fmt.Printf("%v", emoji.Laptop)
+	}
 	// Main game loop
 	for guess != answer {
 		// Receive user input
+
 		for {
 			isCorrect := false
-			fmt.Print("Introduce un número del 1 al 100 ", MIN, " and ", MAX, ": ")
+
+			fmt.Printf("\n\n")
+			fmt.Print("Introduce un número del ", MIN, " al ", MAX, ": ")
 			for scanner.Scan() {
+
 				input := scanner.Text()
 
 				n, err := strconv.ParseInt(input, 10, 0)
@@ -60,7 +69,7 @@ func main() {
 		} else if guess < answer {
 			fmt.Printf("El número que estoy pensando es mayor al que has introducido %v\n", emoji.ThumbsUp)
 		} else {
-			fmt.Printf("%v ¡Has acertado!. Número de intentos: %v\n", emoji.WaterBuffalo, tries)
+			fmt.Printf("%v ¡Lo has acertado!. Número de intentos: %v %v\n", emoji.MoneyWithWings, tries, emoji.MoneyWithWings)
 
 			break
 		}
