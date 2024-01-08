@@ -32,18 +32,19 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 	fmt.Printf("\n\n")
 
-	fmt.Printf("%s Bienvenido al juego de adivinar el número %s \n", emoji.SmilingCatWithHeartEyes, emoji.SmilingCatWithHeartEyes)
-	for i := 1; i < 25; i++ {
+	fmt.Printf("%s Bienvenido al juego de adivinar el número. %s \n", emoji.SmilingCatWithHeartEyes, emoji.SmilingCatWithHeartEyes)
+	fmt.Printf("%s He pensado un número del 1 al 100 y tienes que adivinar cual es. %s \n", emoji.SmilingCatWithHeartEyes, emoji.SmilingCatWithHeartEyes)
+	/*for i := 1; i < 25; i++ {
 		fmt.Printf("%v", emoji.Laptop)
-	}
+	}*/
 
 	fmt.Printf("\n\n")
 	fmt.Printf("Introduce tu nombre por favor.")
 	scanner.Scan()
 	name = scanner.Text()
-	fmt.Println(name)
+	//fmt.Println(name)
 	startGame(users, name, MIN, MAX, answer, *scanner)
-	fmt.Printf("users: %v", users)
+	//fmt.Printf("users: %v", users)
 
 }
 
@@ -52,8 +53,8 @@ func openFile() {
 	var err error
 	usersFile, err = os.ReadFile("/tmp/dat2")
 	check(err)
-	text := string(usersFile)
-	fmt.Println(text)
+	//text := string(usersFile)
+	//	fmt.Println(text)
 
 }
 
@@ -109,13 +110,13 @@ func startGame(users map[string]int, name string, min int, max int, answer int, 
 		// Check our guess is correct
 		tries++
 		if guess > answer {
-			fmt.Printf("El número que estoy pensando es menor al que has introducido %v\n", emoji.ThumbsDown)
+			fmt.Printf("El número que estoy pensando es menor al que has introducido %v\n", emoji.DownArrow)
 		} else if guess < answer {
-			fmt.Printf("El número que estoy pensando es mayor al que has introducido %v\n", emoji.ThumbsUp)
+			fmt.Printf("El número que estoy pensando es mayor al que has introducido %v\n", emoji.UpArrow)
 		} else {
 			fmt.Printf("%v ¡Lo has acertado!. Número de intentos: %v %v\n", emoji.MoneyWithWings, tries, emoji.MoneyWithWings)
 			users[name] = tries
-			fmt.Printf("users: %v", users)
+			//fmt.Printf("users: %v", users)
 			var a string = name + " " + strconv.Itoa(tries)
 			appendUserToFile(a)
 			break
